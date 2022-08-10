@@ -18,11 +18,12 @@
                 <button (click)="openDialog(movie._id, 'synopsis')" mat-button color="primary">
                     Synopsis
                 </button>
-                <div *ngIf="checkIsFavorite(movie._id); else notFavorite">
-                    <mat-icon (click)="deleteFavorite(movie._id)">favorite</mat-icon>
-                </div>
+                <div *ngIf="checkIsFavorite(movie._id); then thenBlock else notFavorite"></div>
+                <ng-template #thenBlock>
+                    <mat-icon class="favorite-icon" (click)="deleteFavorite(movie._id)">favorite</mat-icon>
+                </ng-template>
                 <ng-template #notFavorite>
-                    <mat-icon (click)="setFavorite(movie._id)">favorite_border</mat-icon>
+                    <mat-icon class="favorite-icon" (click)="setFavorite(movie._id)">favorite_border</mat-icon>
                 </ng-template>
             </mat-card-footer>
         </mat-card>

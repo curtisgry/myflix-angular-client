@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,10 +19,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { DisplayInfoComponent } from './display-info/display-info.component';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
@@ -38,7 +41,7 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     UserProfileComponent,
-    DisplayInfoComponent
+    DisplayInfoComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -57,12 +60,16 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatDividerModule,
     MatGridListModule,
-    MatTabsModule
+    MatTabsModule,
+    MatListModule,
+    MatToolbarModule,
   ],
-  providers: [{
-    provide: MatDialogRef,
-    useValue: {}
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {},
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

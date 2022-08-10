@@ -14,14 +14,16 @@
 .mat-grid {
     width: 100%;
     padding: 3rem 0;
-    &__inner {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        padding-bottom: 1rem;
-        justify-items: center;
-    }
-    @media (min-width: 500px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-bottom: 1rem;
+    justify-items: center;
+    gap: 15px;
+    @media (min-width: 700px) {
         grid-template-columns: 1fr 1fr;
     }
+}
+
+.favorite-icon {
+    color: #e52924;
 }
