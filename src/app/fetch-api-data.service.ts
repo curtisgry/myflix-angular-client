@@ -28,7 +28,7 @@ export class UserService {
     console.log(userDetails);
     const token = localStorage.getItem('token');
     return this.http.put<any>(apiUrl + 'users/' + userName, userDetails, {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+      Authorization: 'Bearer ' + token,
     })}).pipe(
     map(this.extractResponseData),
     catchError(this.handleError)
@@ -39,7 +39,7 @@ export class UserService {
   public getUserInfo(userName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get<any>(apiUrl + 'users/' + userName, {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+      Authorization: 'Bearer ' + token,
     })}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
@@ -59,7 +59,7 @@ export class UserService {
   public deleteUser(userName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.delete<any>(`${apiUrl}users/${userName}`, {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+      Authorization: 'Bearer ' + token,
     })})
     .pipe(
       map(this.extractResponseData),
@@ -84,7 +84,9 @@ private handleError(error: HttpErrorResponse): any {
     'Something bad happened; please try again later.');
   }
 }
-
+@Injectable({
+  providedIn: 'root'
+})
 export class FavoritesService {
   // Inject the HttpClient module to the constructor params
  // This will provide HttpClient to the entire class, making it available via this.http
@@ -94,8 +96,8 @@ export class FavoritesService {
   // Favorite list is in user info response
   public getFavoritesList(userName: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get<any>(apiUrl + 'users' + userName, {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+    return this.http.get<any>(apiUrl + 'users/' + userName, {headers: new HttpHeaders({
+      Authorization: 'Bearer ' + token,
     })}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
@@ -105,8 +107,9 @@ export class FavoritesService {
   //Add favorite to list
   public addUserFavorite(userName: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.post<any>(`${apiUrl}users/${userName}/movies/${movieId}`, {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+    console.log(token)
+    return this.http.post<any>(`${apiUrl}users/${userName}/movies/${movieId}`, null, {headers: new HttpHeaders({
+      Authorization: 'Bearer ' + token,
     })}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
@@ -117,7 +120,7 @@ export class FavoritesService {
   public deleteUserFavorite(userName: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.delete(`${apiUrl}users/${userName}/movies/${movieId}`, {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+      Authorization: 'Bearer ' + token,
     })}).pipe(
       catchError(this.handleError)
     )
@@ -140,7 +143,9 @@ private handleError(error: HttpErrorResponse): any {
     'Something bad happened; please try again later.');
   }
 }
-
+@Injectable({
+  providedIn: 'root'
+})
 export class MoviesService {
   // Inject the HttpClient module to the constructor params
  // This will provide HttpClient to the entire class, making it available via this.http
@@ -150,8 +155,9 @@ export class MoviesService {
   // Get full list of movies form api
   public getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
+    console.log(token)
     return this.http.get<any>(apiUrl + 'movies', {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+      Authorization: 'Bearer ' + token,
     })}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
@@ -162,7 +168,7 @@ export class MoviesService {
   public getOneByTitle(title: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get<any>(`${apiUrl}/movies/${title}`, {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+      Authorization: 'Bearer ' + token,
     })}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
@@ -173,7 +179,7 @@ export class MoviesService {
   public getByGenre(genreName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get<any>(`${apiUrl}/movies/genre/${genreName}`, {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+      Authorization: 'Bearer ' + token,
     })}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
@@ -184,7 +190,7 @@ export class MoviesService {
   public getByDirector(director: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get<any>(`${apiUrl}/movies/directors/${director}`, {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+      Authorization: 'Bearer ' + token,
     })}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
@@ -209,7 +215,9 @@ private handleError(error: HttpErrorResponse): any {
     'Something bad happened; please try again later.');
   }
 }
-
+@Injectable({
+  providedIn: 'root'
+})
 export class DirectorService {
   // Inject the HttpClient module to the constructor params
  // This will provide HttpClient to the entire class, making it available via this.http
@@ -220,7 +228,7 @@ export class DirectorService {
   public getDirector(director: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get<any>(`${apiUrl}/directors/${director}`, {headers: new HttpHeaders({
-      Authorization: 'Bearer' + token,
+      Authorization: 'Bearer ' + token,
     })}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)

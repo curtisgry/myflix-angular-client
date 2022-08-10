@@ -30,13 +30,15 @@ ngOnInit(): void {
 // This is the function responsible for sending the form inputs to the backend
 logInUser(): void {
     const {Username, Password} = this.userData
+    console.log(Username, Password)
     this.userService.authenticateUser(Username, Password).subscribe((result) => {
     // Logic for a successful user Login goes here! (To be implemented)
      this.dialogRef.close(); // This will close the modal on success
     //  Set local storage token and user
      localStorage.setItem('token', result.token)
      localStorage.setItem('user', result.user.Username)
-     this.snackBar.open(result, 'OK', {
+     console.log(result)
+     this.snackBar.open(result.user.Username, 'OK', {
         duration: 2000
      });
     }, (result) => {

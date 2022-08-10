@@ -1,12 +1,20 @@
-<div class="main-page">
-  <h1>
-    Welcome to myFlix!
-  </h1>
-  <button Mat-raised-button (click)="openUserRegistrationDialog()" style="margin-right: 10px;" color="primary">
-    Sign Up
-  </button>
-  <button mat-raised-button (click)="openUserLoginDialog()" color="primary">
-    Login
-  </button>
-</div>
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+  <mat-sidenav class="sidebar" mode="side" opened>
+    <h4 class="name">myFlix</h4>
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" routerLink="/profile">
+      <mat-icon>person</mat-icon>
+      <span>Profile</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" routerLink="/movies">
+      <mat-icon>movie</mat-icon>
+      <span>Movies</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

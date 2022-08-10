@@ -1,0 +1,12 @@
+<div *ngIf="data.from == 'director'">
+    <h3>{{data.DirectorName}}</h3>
+    <p>{{data.DirectorBio}}</p>
+</div>
+<div *ngIf="data.from == 'synopsis'">
+    <h2>{{data.Title}}</h2>
+    <h3>{{data.Description}}</h3>
+</div>
+<div *ngIf="data.from == 'genre'">
+    <h2>{{data.GenreName}}</h2>
+    <h3>{{data.GenreDescription}}</h3>
+</div>

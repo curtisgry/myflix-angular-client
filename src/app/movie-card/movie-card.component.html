@@ -1,0 +1,30 @@
+<div class="mat-grid">
+    <div class="mat-grid__inner" *ngFor="let movie of movies;">
+        <mat-card class="movie-card">
+            <mat-card-header>
+                <mat-card-title>{{movie.Title}}</mat-card-title>
+                <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-xl-image style="object-fit: cover;"
+                src="https://res.cloudinary.com/drghkywbx/image/upload/c_thumb,w_200/v1649103140/{{movie.ImagePath}}"
+                alt={{movie.Title}} />
+            <mat-card-footer>
+                <button (click)="openDialog(movie._id, 'genre')" mat-button color="primary">
+                    Genre
+                </button>
+                <button (click)="openDialog(movie._id, 'director')" mat-button color="primary">
+                    Director
+                </button>
+                <button (click)="openDialog(movie._id, 'synopsis')" mat-button color="primary">
+                    Synopsis
+                </button>
+                <div *ngIf="checkIsFavorite(movie._id); else notFavorite">
+                    <mat-icon (click)="deleteFavorite(movie._id)">favorite</mat-icon>
+                </div>
+                <ng-template #notFavorite>
+                    <mat-icon (click)="setFavorite(movie._id)">favorite_border</mat-icon>
+                </ng-template>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>
