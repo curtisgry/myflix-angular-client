@@ -13,6 +13,11 @@ export class AppComponent {
 
   private _mobileQueryListener: () => void;
 
+  /**
+   * Media query for responsive side nav
+   * @param changeDetectorRef 
+   * @param media 
+   */
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();

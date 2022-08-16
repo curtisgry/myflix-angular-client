@@ -7,6 +7,10 @@ import { DisplayInfoComponent } from '../display-info/display-info.component';
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss']
 })
+/**
+ * Display info and inputs for each movie in the movies list
+ * from the api in a card
+ */
 export class MovieCardComponent {
   movies: any[] = [];
   favorites: any[] = [];
@@ -48,6 +52,9 @@ getMovies(): void {
     });
   }
 
+  /**
+   * Refresh list to show updated favorite status on movie card
+   */
 refreshFavorites(): void {
   const user = localStorage.getItem('user') || '';
   const token = localStorage.getItem('token')
@@ -55,7 +62,10 @@ refreshFavorites(): void {
       this.favorites = result.FavoriteMovies
     })
 }
-
+/**
+ * Add a movie to the users favorite list
+ * @param movieId 
+ */
 setFavorite(movieId: string): void {
   const user = localStorage.getItem('user') || '';
   const token = localStorage.getItem('token')
@@ -63,6 +73,10 @@ setFavorite(movieId: string): void {
     this.refreshFavorites();
   })
 }
+/**
+ * Delete favorite from user in api
+ * @param movieId 
+ */
 
 deleteFavorite(movieId: string): void {
   const user = localStorage.getItem('user') || '';
@@ -71,7 +85,11 @@ deleteFavorite(movieId: string): void {
     this.refreshFavorites();
   })
 }
-
+/**
+ * Check if the movie exists in the current users favorite list
+ * @param movieId 
+ * @returns boolean
+ */
 checkIsFavorite(movieId: string) {
   const list = this.favorites.filter(fav => fav  === movieId);
   if(list.length){

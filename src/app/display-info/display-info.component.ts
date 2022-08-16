@@ -7,6 +7,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './display-info.component.html',
   styleUrls: ['./display-info.component.scss']
 })
+/**
+ * Takes data from a movie and conditionaly renders based on
+ * the type of information in the template. 
+ */
 export class DisplayInfoComponent {
   movies: any[] = [];
   constructor(
@@ -35,8 +39,4 @@ getMovies(): void {
     });
   }
 
-
-getDirectorInfo(movieId: string): void {
-  
-}
 }

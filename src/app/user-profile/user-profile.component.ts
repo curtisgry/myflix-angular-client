@@ -15,6 +15,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
+/**
+ * Component to update a users profile information
+ */
 export class UserProfileComponent implements OnInit {
 
 user = localStorage.getItem('user') || '';
@@ -42,7 +45,9 @@ getInfo(): void {
      }
     });
   }
-
+/**
+ * Will update the user profile info on the backend
+ */
   updateUser(): void {
     this.userService.updateUserInfo(this.user, this.userData).subscribe((result) => {
       this.snackBar.open('Profile Updated', 'OK', {
