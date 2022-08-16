@@ -19,7 +19,7 @@ Users are able to:
 
 ### Links
 
-- Live Site URL: [Here](https://myflix-5f2a35.netlify.app/)
+- Live Site URL: [Here](https://curtisgry.github.io/myflix-angular-client)
 
 -Test credentials
 Username: testaccount
